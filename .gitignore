@@ -1,4 +1,7 @@
-/bower_components
-/node_modules
-/.idea
-/.tmp
+bower_components/
+node_modules/
+out/
+dist/
+
+# don't track temporal files
+.tmp/
