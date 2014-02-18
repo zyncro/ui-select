@@ -40,16 +40,16 @@ describe('ui-select tests', function() {
   }
 
   function getMatchLabel(el) {
-    return $(el).find('.ui-select-match > span[ng-transclude]').text();
+    return _jQuery(el).find('.ui-select-match > span[ng-transclude]').text();
   }
 
   function clickItem(el, text) {
-    $(el).find('.ui-select-choices-row > div:contains("' + text + '")').click();
+    _jQuery(el).find('.ui-select-choices-row > div:contains("' + text + '")').click();
     scope.$digest();
   }
 
   function clickMatch(el) {
-    $(el).find('.ui-select-match').click();
+    _jQuery(el).find('.ui-select-match').click();
     scope.$digest();
   }
 
@@ -57,19 +57,19 @@ describe('ui-select tests', function() {
   it('should compile child directives', function() {
     var el = createUiSelect();
 
-    var searchEl = $(el).find('.ui-select-search');
+    var searchEl = _jQuery(el).find('.ui-select-search');
     expect(searchEl.length).toEqual(1);
 
-    var matchEl = $(el).find('.ui-select-match');
+    var matchEl = _jQuery(el).find('.ui-select-match');
     expect(matchEl.length).toEqual(1);
 
-    var choicesContentEl = $(el).find('.ui-select-choices-content');
+    var choicesContentEl = _jQuery(el).find('.ui-select-choices-content');
     expect(choicesContentEl.length).toEqual(1);
 
-    var choicesContainerEl = $(el).find('.ui-select-choices');
+    var choicesContainerEl = _jQuery(el).find('.ui-select-choices');
     expect(choicesContainerEl.length).toEqual(1);
 
-    var choicesElems = $(el).find('.ui-select-choices-row');
+    var choicesElems = _jQuery(el).find('.ui-select-choices-row');
     expect(choicesElems.length).toEqual(6);
   });
 
@@ -94,7 +94,7 @@ describe('ui-select tests', function() {
     expect(el.scope().open).toEqual(true);
 
     // FIXME This should work and does not inside Karma
-    var visible = $(el).find('.ui-select-choices').is(':visible');
+    var visible = _jQuery(el).find('.ui-select-choices').is(':visible');
     //expect(visible).toEqual(true);
     expect(visible).toEqual(false); // FIXME Always false in Karma
   });
@@ -128,14 +128,14 @@ describe('ui-select tests', function() {
   it('should close the choices when an item is selected', function() {
     var el = createUiSelect();
 
-    $(el).find('.ui-select-match').click();
+    _jQuery(el).find('.ui-select-match').click();
     scope.$digest();
 
     expect(el.scope().open).toEqual(true);
 
     clickItem(el, 'Samantha Smith');
 
-    var visible = $(el).find('.ui-select-choices').is(':visible');
+    var visible = _jQuery(el).find('.ui-select-choices').is(':visible');
     expect(visible).toEqual(false); // FIXME Always false in Karma
 
     expect(el.scope().open).toEqual(false);
