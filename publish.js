@@ -16,6 +16,8 @@ module.exports = function() {
     repoName : 'ui-select',
     inlineHTML : fs.readFileSync(__dirname + '/examples/demo.html'),
     css : css_dependencies.concat(['dist/select.css']),
-    js : ['dist/select.js']
+    js : ['dist/select.js', 'vendor/demo.js'],
+    tocopy : ['examples/demo.js']
   };
+
 };
