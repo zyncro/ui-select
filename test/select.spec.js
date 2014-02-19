@@ -29,13 +29,13 @@ describe('ui-select tests', function() {
 
   function createUiSelect() {
     return compileTemplate(
-      '<ui-select ng-model="selection"> \
-        <match placeholder="Pick one...">{{$select.selected.name}}</match> \
-        <choices data="matches | filter: $select.search"> \
-          <div ng-bind-html="trustAsHtml((item.name | highlight: $select.search))"></div> \
-          <div>{{item.email}}</div> \
-        </choices> \
-      </ui-select>'
+      '<ui-select ng-model="selection">' +
+        '<match placeholder="Pick one...">{{$select.selected.name}}</match>' +
+        '<choices data="matches | filter: $select.search">' +
+          '<div ng-bind-html="trustAsHtml((item.name | highlight: $select.search))"></div>' +
+          '<div>{{item.email}}</div>' +
+        '</choices>' +
+      '</ui-select>'
     );
   }
 
@@ -120,7 +120,7 @@ describe('ui-select tests', function() {
   it('should not select a non existing item', function() {
     var el = createUiSelect();
 
-    clickItem(el, "I don't exist");
+    clickItem(el, 'I don\'t exist');
 
     expect(getMatchLabel(el)).toEqual('');
   });

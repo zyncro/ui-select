@@ -38,10 +38,10 @@ angular.module('ui.select', [])
     scope: true,
     controllerAs: 'uiSelectCtrl',
 
-    controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+    controller: ['$scope', '$element', '$attrs', function($scope, $element) {
       var ctrl = this;
 
-      this.activate = function($event) {
+      this.activate = function() {
         $scope.open = true;
         // Give it time to appear before focus
         $timeout(function() {
@@ -57,7 +57,7 @@ angular.module('ui.select', [])
 
       this.close = function() {
         $scope.open = false;
-        $scope.$select.search = "";
+        $scope.$select.search = '';
       };
 
       this.input = $element.find('input'); // TODO could break if input is at other template
@@ -70,7 +70,7 @@ angular.module('ui.select', [])
       var uiSelectCtrl = controllers[0];
       var ngModelCtrl = controllers[1];
 
-      scope.$watch('$select.selected', function(newVal, oldVal) {
+      scope.$watch('$select.selected', function(newVal) {
         if (ngModelCtrl.$viewValue !== newVal) ngModelCtrl.$setViewValue(newVal);
       });
 
@@ -85,7 +85,7 @@ angular.module('ui.select', [])
         if (window.jQuery) {
           // Firefox 3.6 does not support element.contains()
           // See Node.contains https://developer.mozilla.org/en-US/docs/Web/API/Node.contains
-          contains = $.contains(element[0], evt.target);
+          contains = window.jQuery.contains(element[0], evt.target);
         } else {
           contains = element[0].contains(evt.target);
         }
@@ -137,9 +137,9 @@ angular.module('ui.select', [])
     compile: function(tElement, tAttrs) {
 
       tElement.querySelectorAll('.ui-select-choices-row')
-        .attr("ng-repeat", 'item in ' + tAttrs.data)
-        .attr("ng-mouseenter", '$select.activeIdx=$index')
-        .attr("ng-click", 'uiSelectCtrl.select(item)');
+        .attr('ng-repeat', 'item in ' + tAttrs.data)
+        .attr('ng-mouseenter', '$select.activeIdx=$index')
+        .attr('ng-click', 'uiSelectCtrl.select(item)');
 
       return function(scope, element, attrs, uiSelectCtrl) {
 
@@ -227,7 +227,7 @@ angular.module('ui.select', [])
 
 .filter('highlight', function() {
   function escapeRegexp(queryToEscape) {
-    return queryToEscape.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+    return queryToEscape.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
   }
   return function(matchItem, query) {
     return query ? matchItem.replace(new RegExp(escapeRegexp(query), 'gi'), '<span class="ui-select-highlight">$&</span>') : matchItem;

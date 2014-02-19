@@ -66,6 +66,7 @@ module.exports = function (grunt) {
           node: true,
           globals: {
             angular: false,
+            inject: false,
             _jQuery: false,
 
             jasmine: false,
