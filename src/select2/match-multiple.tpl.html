@@ -7,7 +7,7 @@
   <li class="ui-select-match-item select2-search-choice" ng-repeat="$item in $select.selected" 
       ng-class="{'select2-search-choice-focus':$selectMultiple.activeMatchIndex === $index, 'select2-locked':$select.isLocked(this, $index)}"
       ui-select-sort="$select.selected">
+      <span class="fa fa-times" ng-click="$selectMultiple.removeChoice($index)" tabindex="-1"></span>
       <span uis-transclude-append></span>
-      <span class="ui-select-match-close select2-search-choice-close fa fa-close" ng-click="$selectMultiple.removeChoice($index)" tabindex="-1"></span>
   </li>
 </span>
