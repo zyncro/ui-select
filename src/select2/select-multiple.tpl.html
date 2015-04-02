@@ -3,7 +3,7 @@
                 'select2-container-disabled': $select.disabled}">
     <div>
         <ul class="select2-choices">
-            <span class="ui-select-match"></span>
+            <li class="ui-select-match"></li>
             <li class="select2-search-field">
                 <input
                         type="text"
@@ -24,11 +24,12 @@
                         ng-click="$select.activate()"
                         style="width: 34px;"
                         ondrop="return false;">
+
+                <div class="select2-drop select2-with-searchbox select2-drop-active"
+                     ng-class="{'select2-display-none': !$select.open}">
+                    <div class="ui-select-choices"></div>
+                </div>
             </li>
         </ul>
-        <div class="select2-drop select2-with-searchbox select2-drop-active"
-             ng-class="{'select2-display-none': !$select.open}">
-            <div class="ui-select-choices"></div>
-        </div>
     </div>
 </div>
